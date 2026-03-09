@@ -64,8 +64,8 @@ function CemberinCevresi(r) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(r,pi) {
+  return pi*r*r;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -98,26 +98,55 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
-
+enkucuk = sayilar[0];
+enbuyuk = sayilar[0];
+for (let num of sayilar){
+  if(num<enkucuk) enkucuk = num;
+  if(num>enbuyuk) enbuyuk = num;
+}
+console.log(enbuyuk, enkucuk);
 /* kodlar buraya */
 
 // 3b çözümü:
-
+ucetambolunenler = [];
+sayilar.forEach(sayi => {
+  sayi%3===0? ucetambolunenler.push(sayi): ucetambolunenler.push();
+  
+});
+console.log(ucetambolunenler)
 /* kodlar buraya */
 
 // 3c çözümü:
-
+ucebolunenlerintoplami= ucetambolunenler.reduce((total, num)=>total+=num);
+console.log(ucebolunenlerintoplami);
 /* kodlar buraya */
 
 // 3d çözümü
+besyuzdenkucuksayilar= sayilar.filter((sayi)=>sayi<500);
+console.log("besyuzdenkucuksayilar",besyuzdenkucuksayilar)
 
 /* kodlar buraya */
 
 // 3e çözümü
+besyuzdenkucuksayilar.sort((a,b)=>a-b);
+
+console.log("besyuzdenkucuksayilar",besyuzdenkucuksayilar)
+
 
 /* kodlar buraya */
 
 // 3f çözümü
+tekraredensayilar= [];
+const tekrarlar={};
+for(let i=0; i<sayilar.length; i++){
+  if(tekrarlar[sayilar[i]]) tekrarlar[sayilar[i]]++;
+  else tekrarlar[sayilar[i]] = 1 ;
+}
+
+for (let tekrar in tekrarlar){
+    tekraredensayilar.push(`${tekrar} sayısı ${tekrarlar[tekrar]} tekrar edilmiştir`)
+}
+console.log("tekrarr",tekraredensayilar)
 
 /* kodlar buraya */
 
@@ -140,3 +169,6 @@ module.exports = {
   siralisayilar,
   tekraredensayilar,
 };
+
+console.log(CemberinCevresi(3));
+console.log(CemberinAlani(3,pi));
